@@ -35,20 +35,20 @@ public class WebSecurityConfig {
     }
 	
 	@Bean
-	SecurityFilterChain configureHttp(HttpSecurity http) throws Exception {
+	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 		http.authenticationProvider(authenticationProvider());
-		
-		http.authorizeHttpRequests(auth -> auth
-		        .anyRequest().authenticated()
-		        )
-		        .formLogin(form -> form
-		                .loginPage("/login")
-		                .usernameParameter("email")
-		                .permitAll()
-		        );
-				
-		return http.build();
-		
+
+	    http.authorizeHttpRequests(auth -> auth
+	        .anyRequest().authenticated()
+	    )
+        .formLogin(form -> form
+                        .loginPage("/login") // Specify custom login page URL
+                        .usernameParameter("email") // Set username parameter to "email"
+                        .permitAll() // Allow access to the login page
+        )
+        .logout(logout -> logout.permitAll());
+
+	    return http.build();
 	}
 	
 	@Bean
