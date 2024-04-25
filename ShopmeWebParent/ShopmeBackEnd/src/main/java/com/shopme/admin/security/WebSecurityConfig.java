@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 
 	@Bean
-    UserDetailsService userDetailsService() {
+    public UserDetailsService userDetailsService() {
         return new ShopmeUserDetailsService();
     }
 

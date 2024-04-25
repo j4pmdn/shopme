@@ -12,14 +12,14 @@ import com.shopme.common.entity.User;
 public class ShopmeUserDetailsService implements UserDetailsService {
 	
 	@Autowired
-    private UserRepository repo;
+    private UserRepository userRepo;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = repo.getUserByEmail(email);
+        User user = userRepo.getUserByEmail(email);
         
         if (user != null) {
-            return (UserDetails) user;
+            return new ShopmeUserDetails(user);
         }
         
         throw new UsernameNotFoundException("Could not find user with email: " + email);
