@@ -1,8 +1,10 @@
-package com.shopme.admin.user;
+package com.shopme.admin.user.export;
 
 import java.awt.Color;
 import java.io.IOException;
 import java.util.List;
+
+import com.shopme.admin.user.AbstractExporter;
 import com.shopme.common.entity.User;
 
 import com.lowagie.text.Document;
