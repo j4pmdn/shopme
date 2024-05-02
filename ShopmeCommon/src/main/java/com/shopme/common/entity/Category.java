@@ -37,6 +37,9 @@ public class Category {
 
 	@OneToMany(mappedBy = "parent")
 	private Set<Category> children = new HashSet<>();
+	
+	public Category() {
+	}
 
 	public Category(Integer id) {
 		this.id = id;
