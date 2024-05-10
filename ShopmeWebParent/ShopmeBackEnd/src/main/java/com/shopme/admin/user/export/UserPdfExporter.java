@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.io.IOException;
 import java.util.List;
 
+import com.shopme.admin.AbstractExporter;
 import com.shopme.common.entity.User;
 
 import com.lowagie.text.Document;
@@ -21,7 +22,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class UserPdfExporter extends AbstractExporter {
 
 	public void export(List<User> listUsers, HttpServletResponse response) throws IOException {
-		super.setResponseHeader(response, "application/pdf", ".pdf");
+		super.setResponseHeader(response, "application/pdf", ".pdf", "users_");
 
 		Document document = new Document(PageSize.A4);
 		PdfWriter.getInstance(document, response.getOutputStream());
