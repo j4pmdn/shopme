@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CategoryRestController {
-	
+
 	@Autowired
 	private CategoryService service;
 	
@@ -16,5 +16,4 @@ public class CategoryRestController {
 			@Param("alias") String alias) {
 		return service.checkUnique(id, name, alias);
 	}
-	
 }
