@@ -1,7 +1,6 @@
 package com.shopme.common.entity;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -44,6 +43,11 @@ public class Brand {
 	public Brand(String name) {
 		this.name = name;
 		this.logo = "brand-logo.png";
+	}
+	
+	public Brand(Integer id, String name) {
+		this.id = id;
+		this.name = name;
 	}
 	
 	public Integer getId() {
