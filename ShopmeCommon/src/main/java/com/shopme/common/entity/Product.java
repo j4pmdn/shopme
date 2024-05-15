@@ -14,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 
 @Entity
@@ -236,4 +237,10 @@ public class Product {
 		this.images.add(new ProductImage(imageName, this));
 	}
 	
+	@Transient
+	public String getMainImagePath() {
+		if (id == null || mainImage == null) return "/images/image-thumbnail.png";
+
+		return "/product-images/" + this.id + "/" + this.mainImage;
+	}
 }
