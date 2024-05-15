@@ -7,5 +7,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import com.shopme.common.entity.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
+	
+	public Long countById(Integer id);
 
 }
+
