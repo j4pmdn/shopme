@@ -53,7 +53,7 @@ public class ProductController {
 	}
 	
 	@PostMapping("/products/save")
-	public String saveProduct(Product product, RedirectAttributes ra, 
+	public String saveProduct(Product product, RedirectAttributes ra,
 			@RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
 		
 		if (!multipartFile.isEmpty()) {
@@ -69,8 +69,8 @@ public class ProductController {
 		} else {
 			productService.save(product);
 		}
-	
-		ra.addFlashAttribute("message", "The product hass been saved succesfully.");
+		
+		ra.addFlashAttribute("message", "The product has been saved successfully.");
 		
 		return "redirect:/products";
 	}

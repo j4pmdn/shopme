@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<head>
 	<head th:replace="fragments :: page_head(${pageTitle}, 'tag')" />
 	<link rel="stylesheet" th:href="@{/richtext/richtext.min.css}" />
 	<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
-</head>
 </head>
 <body>
 <div class="container-fluid">
@@ -13,8 +11,9 @@
 	<div>
 		<h2>Manage Products | [[${pageTitle}]]</h2>	
 	</div>
-
-	<form th:action="@{/products/save}" method="post" enctype="multipart/form-data"
+			
+	<form th:action="@{/products/save}" method="post" onsubmit="return checkUnique(this)"
+		enctype="multipart/form-data"
 		th:object="${product}">
 		<input type="hidden" th:field="*{id}" />
 	<div>
@@ -33,9 +32,9 @@
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" data-toggle="tab" href="#shipping" role="tab">Shipping</a>
-		  </li>
+		  </li>		  
 		</ul>
-
+		
 		<div class="tab-content">
 		  <div class="tab-pane active p-3" id="overview" role="tabpanel">
 		  	<div th:replace="products/product_overview :: content"></div>
@@ -44,10 +43,10 @@
 		  	<div th:replace="products/product_description :: content"></div>
 		  </div>
 		  <div class="tab-pane" id="images" role="tabpanel">
-		 	<div th:replace="products/product_images :: content"></div>
+		  	<div th:replace="products/product_images :: content"></div>
 		  </div>
 		  <div class="tab-pane" id="details" role="tabpanel">Details</div>
-		  <div class="tab-pane" id="shipping" role="tabpanel">
+		  <div class="tab-pane p-3" id="shipping" role="tabpanel">
 		  	<div th:replace="products/product_shipping :: content"></div>
 		  </div>
 		</div>	
@@ -57,45 +56,21 @@
 		<input type="button" value="Cancel" class="btn btn-secondary" id="buttonCancel" />
 	</div>
 	</form>
-
+	
 	<div th:replace="modal_fragments :: modal_dialog"></div>
-
+	
 	<div th:replace="fragments :: footer"></div>
-
+	
 </div>
 <script type="text/javascript">
 	MAX_FILE_SIZE = 502400; // 500KB
+	
 	moduleURL = "[[@{/products}]]";
 	brandModuleURL = "[[@{/brands}]]";
-
-	dropdownBrands = $("#brand");
-	dropdownCategories = $("#category");
-
-	$(document).ready(function() {
-		
-		$("#shortDescription").richText();
-		$("#fullDescription").richText();
-		
-		dropdownBrands.change(function() {
-			dropdownCategories.empty();
-			getCategories();
-		});	
-
-		getCategories();
-	});
-
-
-	function getCategories() {
-		brandId = dropdownBrands.val(); 
-		url = brandModuleURL + "/" + brandId + "/categories";
-
-		$.get(url, function(responseJson) {
-			$.each(responseJson, function(index, category) {
-				$("<option>").val(category.id).text(category.name).appendTo(dropdownCategories);
-			});			
-		});
-	}
+	defaultImageThumbnailSrc = "[[@{/images/image-thumbnail.png}]]";
+	
 </script>
 <script th:src="@{/js/common_form.js}"></script>
+<script th:src="@{/js/product_form.js}"></script>
 </body>
 </html>
