@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shopme.common.entity.Product;
+import com.shopme.common.exception.ProductNotFoundException;
 
 @Service
 public class ProductService {
@@ -34,7 +35,7 @@ public class ProductService {
 		return repo.save(product);
 	}
 	
-	public void delete(Integer id) throws ProductNotFoundException {
+	public void delete(Integer id) throws ProductNotFoundException  {
 		Long countById = repo.countById(id);
 
 		if (countById == null || countById == 0) {

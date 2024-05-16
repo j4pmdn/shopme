@@ -19,6 +19,7 @@ import com.shopme.admin.FileUploadUtil;
 import com.shopme.admin.brand.BrandService;
 import com.shopme.common.entity.Brand;
 import com.shopme.common.entity.Product;
+import com.shopme.common.exception.ProductNotFoundException;
 
 @Controller
 public class ProductController {

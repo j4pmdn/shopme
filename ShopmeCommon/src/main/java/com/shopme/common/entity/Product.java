@@ -78,6 +78,14 @@ public class Product {
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<ProductDetail> details = new ArrayList<>();
 	
+
+	public Product(Integer id) {
+		this.id = id;
+	}
+
+	public Product() {
+	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -259,6 +267,14 @@ public class Product {
 	
 	public void addDetail(String name, String value) {
 		this.details.add(new ProductDetail(name, value, this));
+	}
+	
+	@Transient
+	public String getShortName() {
+		if (name.length() > 70) {
+			return name.substring(0, 70).concat("...");
+		}
+		return name;
 	}
 	
 	@Transient
