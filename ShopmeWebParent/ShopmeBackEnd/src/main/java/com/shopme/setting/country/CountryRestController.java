@@ -1,4 +1,4 @@
-package com.shopme.admin.setting.country;
+package com.shopme.setting.country;
 
 import java.util.List;
 
