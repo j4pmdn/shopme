@@ -1,4 +1,4 @@
-package com.shopme.admin.state;
+package com.shopme.admin.setting.state;
 
 import java.util.List;
 
