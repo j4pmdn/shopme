@@ -22,7 +22,6 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.shopme.admin.country.CountryRepository;
 import com.shopme.common.entity.Country;
 
 @SpringBootTest
