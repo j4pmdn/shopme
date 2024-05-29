@@ -61,5 +61,4 @@ public class State {
 		return "State [id=" + id + ", name=" + name + "]";
 	}
 	
-	
 }

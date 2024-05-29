@@ -12,17 +12,16 @@ import com.shopme.common.entity.Customer;
 
 @Controller
 public class CustomerController {
-	@Autowired
-	private CustomerService service;
-
+	@Autowired private CustomerService service;
+	
 	@GetMapping("/register")
 	public String showRegisterForm(Model model) {
 		List<Country> listCountries = service.listAllCountries();
-
+		
 		model.addAttribute("listCountries", listCountries);
 		model.addAttribute("pageTitle", "Customer Registration");
 		model.addAttribute("customer", new Customer());
-
+		
 		return "register/register_form";
 	}
 }
